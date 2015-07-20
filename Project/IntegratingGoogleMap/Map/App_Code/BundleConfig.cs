@@ -19,7 +19,9 @@ namespace Map
                   "~/Scripts/WebForms/GridView.js",
                   "~/Scripts/WebForms/DetailsView.js",
                   "~/Scripts/WebForms/TreeView.js",
-                  "~/Scripts/WebForms/WebParts.js"));
+                  "~/Scripts/WebForms/WebParts.js",
+                   "~/Scripts/bootstrap.js",
+                   "~/Scripts/npm.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/MsAjaxJs").Include(
                 "~/Scripts/WebForms/MsAjax/MicrosoftAjax.js",

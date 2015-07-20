@@ -6,3 +6,10 @@ C:\Users\sachintripathi\documents\visual studio 2012\Projects\IntegratingGoogleM
 C:\Users\sachintripathi\documents\visual studio 2012\Projects\IntegratingGoogleMap\IntegratingGoogleMap\obj\Debug\IntegratingGoogleMap.ClassLibrary.csprojResolveAssemblyReference.cache
 C:\Users\sachintripathi\documents\visual studio 2012\Projects\IntegratingGoogleMap\IntegratingGoogleMap\obj\Debug\IntegratingGoogleMap.dll
 C:\Users\sachintripathi\documents\visual studio 2012\Projects\IntegratingGoogleMap\IntegratingGoogleMap\obj\Debug\IntegratingGoogleMap.pdb
+E:\Sachin_Project\NewIndex\Project\IntegratingGoogleMap\IntegratingGoogleMap\bin\Debug\IntegratingGoogleMap.dll.config
+E:\Sachin_Project\NewIndex\Project\IntegratingGoogleMap\IntegratingGoogleMap\bin\Debug\IntegratingGoogleMap.dll
+E:\Sachin_Project\NewIndex\Project\IntegratingGoogleMap\IntegratingGoogleMap\bin\Debug\IntegratingGoogleMap.pdb
+E:\Sachin_Project\NewIndex\Project\IntegratingGoogleMap\IntegratingGoogleMap\bin\Debug\EntityFramework.dll
+E:\Sachin_Project\NewIndex\Project\IntegratingGoogleMap\IntegratingGoogleMap\bin\Debug\EntityFramework.xml
+E:\Sachin_Project\NewIndex\Project\IntegratingGoogleMap\IntegratingGoogleMap\obj\Debug\IntegratingGoogleMap.dll
+E:\Sachin_Project\NewIndex\Project\IntegratingGoogleMap\IntegratingGoogleMap\obj\Debug\IntegratingGoogleMap.pdb

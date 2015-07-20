@@ -1,34 +1,82 @@
-﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="About.aspx.cs" Inherits="About" %>
+﻿<%@ Page Title="About" Language="C#" AutoEventWireup="true" CodeFile="About.aspx.cs" Inherits="About" %>
 
-<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <hgroup class="title">
-        <h1><%: Title %>.</h1>
-        <h2>Your app description page.</h2>
-    </hgroup>
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load('visualization', '1', { 'packages': ['table', 'map', 'corechart'] });
+        google.setOnLoadCallback(initialize);
 
-    <article>
-        <p>        
-            Use this area to provide additional information.
-        </p>
+        function initialize() {
+            // The URL of the spreadsheet to source data from.
+            var query = new google.visualization.Query(
+                'https://spreadsheets.google.com/pub?key=pCQbetd-CptF0r8qmCOlZGg');
+            query.send(draw);
+        }
 
-        <p>        
-            Use this area to provide additional information.
-        </p>
+        function draw(response) {
+            if (response.isError()) {
+                alert('Error in query');
+            }
 
-        <p>        
-            Use this area to provide additional information.
-        </p>
-    </article>
+            var ticketsData = response.getDataTable();
+            var chart = new google.visualization.ColumnChart(
+                document.getElementById('chart_div'));
+            chart.draw(ticketsData, {
+                'isStacked': true, 'legend': 'bottom',
+                'vAxis': { 'title': 'Number of tickets' }
+            });
 
-    <aside>
-        <h3>Aside Title</h3>
-        <p>        
-            Use this area to provide additional information.
-        </p>
-        <ul>
-            <li><a runat="server" href="~/">Home</a></li>
-            <li><a runat="server" href="~/About.aspx">About</a></li>
-            <li><a runat="server" href="~/Contact.aspx">Contact</a></li>
-        </ul>
-    </aside>
-</asp:Content>
+            var geoData = google.visualization.arrayToDataTable([
+              ['Lat', 'Lon', 'Name', 'Food?'],
+              [51.5072, -0.1275, 'Cinematics London', true],
+              [48.8567, 2.3508, 'Cinematics Paris', true],
+              [55.7500, 37.6167, 'Cinematics Moscow', false]]);
+
+            var geoView = new google.visualization.DataView(geoData);
+            geoView.setColumns([0, 1]);
+
+            var table =
+                new google.visualization.Table(document.getElementById('table_div'));
+            table.draw(geoData, { showRowNumber: false, width: '100%', height: '100%' });
+
+            var map =
+                new google.visualization.Map(document.getElementById('map_div'));
+            map.draw(geoView, { showTip: true });
+
+            // Set a 'select' event listener for the table.
+            // When the table is selected, we set the selection on the map.
+            google.visualization.events.addListener(table, 'select',
+                function () {
+                    map.setSelection(table.getSelection());
+                });
+
+            // Set a 'select' event listener for the map.
+            // When the map is selected, we set the selection on the table.
+            google.visualization.events.addListener(map, 'select',
+                function () {
+                    table.setSelection(map.getSelection());
+                });
+        }
+    </script>
+  </head>
+
+  <body>
+    <table align="center">
+      <tr valign="top">
+        <td style="width: 50%;">
+          <div id="map_div" style="width: 400px; height: 300;"></div>
+        </td>
+        <td style="width: 50%;">
+          <div id="table_div"></div>
+        </td>
+      </tr>
+      <tr>
+        <td colSpan=2>
+          <div id="chart_div" style="align: center; width: 700px; height: 300px;"></div>
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>
