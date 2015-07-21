@@ -68,7 +68,7 @@
         <div>
             <ul class="list-group">
                 <li class="list-group-item"><span class="badge">$&nbsp;1004</span>
-                    Non-Profit Fundraising
+                    Cancer Fundraising
                 </li>
                 <li class="list-group-item"><span class="badge">$&nbsp; 927</span>
                     Charity Fundraising
@@ -88,19 +88,19 @@
         <div>
             <div id="chart_div"></div>
         </div>
-        <h3>Recommandations</h3>
+        <h3>Recommendations</h3>
         <div>
             <div class="alert alert-success" role="alert">
-                <a href="#" class="alert-link">Good Point: Better check yourself, you're not looking too good.</a>
+                <a href="#" class="alert-link">Bone cancer giving is showing an increasing trend in the past years.</a>
             </div>
             <div class="alert alert-info" role="alert">
-                <a href="#" class="alert-link">Warning: Better check yourself, you're not looking too good.</a>
+                <a href="#" class="alert-link">Rehabilition for war veterns has shown a 20% decrease in the past 5 years.</a>
             </div>
             <div class="alert alert-warning" role="alert">
-                <a href="#" class="alert-link">Min: Better check yourself, you're not looking too good.</a>
+                <a href="#" class="alert-link">Food programmes for destitutes has received the maximum donation in the last year.</a>
             </div>
             <div class="alert alert-danger" role="alert">
-                <a href="#" class="alert-link">Max: Better check yourself, you're not looking too good.</a>
+                <a href="#" class="alert-link">Pathways To Peace has received the minimum donation in the last year.</a>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IntegratingGoogleMap.Model
 {
-    public class DonarInfo : IEntity
+    public class DonorInfo : IEntity
     {
         /// <summary>
         /// ID
