@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IntegratingGoogleMap</RootNamespace>
     <AssemblyName>IntegratingGoogleMap</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,57 +47,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caus.cs">
-      <DependentUpon>GoogleMapData.tt</DependentUpon>
+    <Compile Include="Cause.cs">
+      <DependentUpon>IndexData.tt</DependentUpon>
     </Compile>
     <Compile Include="Constituent.cs">
-      <DependentUpon>GoogleMapData.tt</DependentUpon>
+      <DependentUpon>IndexData.tt</DependentUpon>
     </Compile>
-    <Compile Include="DonorData.cs">
-      <DependentUpon>GoogleMapData.tt</DependentUpon>
+    <Compile Include="Donation.cs">
+      <DependentUpon>IndexData.tt</DependentUpon>
     </Compile>
-    <Compile Include="GoogleMapData.Context.cs">
+    <Compile Include="IndexData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GoogleMapData.Context.tt</DependentUpon>
+      <DependentUpon>IndexData.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="GoogleMapData.cs">
+    <Compile Include="IndexData.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GoogleMapData.tt</DependentUpon>
+      <DependentUpon>IndexData.tt</DependentUpon>
     </Compile>
-    <Compile Include="GoogleMapData.Designer.cs">
+    <Compile Include="IndexData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GoogleMapData.edmx</DependentUpon>
+      <DependentUpon>IndexData.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\Constituent.cs" />
-    <Compile Include="Model\DonarInfo.cs" />
-    <Compile Include="Model\DonationCause.cs" />
+    <Compile Include="Model\DonorInfo.cs" />
     <Compile Include="Model\IEntity.cs" />
+    <Compile Include="Model\TotalDonationCause.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\ConstituentRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="GoogleMapData.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GoogleMapData.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Compile Include="Repository\GivingRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="GoogleMapData.Context.tt">
+    <EntityDeploy Include="IndexData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>IndexData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="IndexData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GoogleMapData.edmx</DependentUpon>
-      <LastGenOutput>GoogleMapData.Context.cs</LastGenOutput>
+      <DependentUpon>IndexData.edmx</DependentUpon>
+      <LastGenOutput>IndexData.Context.cs</LastGenOutput>
     </None>
-    <None Include="GoogleMapData.edmx.diagram">
-      <DependentUpon>GoogleMapData.edmx</DependentUpon>
+    <None Include="IndexData.edmx.diagram">
+      <DependentUpon>IndexData.edmx</DependentUpon>
     </None>
-    <None Include="GoogleMapData.tt">
+    <None Include="IndexData.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GoogleMapData.edmx</DependentUpon>
-      <LastGenOutput>GoogleMapData.cs</LastGenOutput>
+      <DependentUpon>IndexData.edmx</DependentUpon>
+      <LastGenOutput>IndexData.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

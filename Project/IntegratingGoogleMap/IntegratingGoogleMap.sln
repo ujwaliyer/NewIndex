@@ -6,6 +6,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Map", "Map\", "{E90EA954-8D9F-4D18-8BA2-97AAFC62FF78}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{49e3dec0-f8e2-4b59-989f-9535ebfa7948}|IntegratingGoogleMap.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Map"
 		Debug.AspNetCompiler.PhysicalPath = "Map\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Map\"

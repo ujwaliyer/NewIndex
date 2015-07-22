@@ -12,11 +12,17 @@ namespace IntegratingGoogleMap
     using System;
     using System.Collections.Generic;
     
-    public partial class DonorData
+    public partial class Cause
     {
+        public Cause()
+        {
+            this.Donations = new HashSet<Donation>();
+        }
+    
         public int ID { get; set; }
-        public Nullable<double> AmountDonated { get; set; }
-        public Nullable<System.DateTime> DonationDate { get; set; }
-        public Nullable<int> CauseID { get; set; }
+        public string CauseName { get; set; }
+        public string ZIPCode { get; set; }
+    
+        public virtual ICollection<Donation> Donations { get; set; }
     }
 }

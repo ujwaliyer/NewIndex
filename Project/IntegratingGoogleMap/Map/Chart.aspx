@@ -44,9 +44,7 @@
     <div class="panel panel-default">
         <div class="panel-body row">
             <div class="form-group col-md-3">
-                <select class="form-control ">
-                    <option>-- Select Country--</option>
-                </select>
+                  USA
             </div>
             <div class="form-group col-md-3">
                 <select class="form-control">
@@ -102,6 +100,10 @@
             <div class="alert alert-danger" role="alert">
                 <a href="#" class="alert-link">Pathways To Peace has received the minimum donation in the last year.</a>
             </div>
+        </div>
+        <h3>Google Map: Donor locations</h3>
+        <div>
+            <div id="gmap">Working.....</div>
         </div>
     </div>
 </asp:Content>

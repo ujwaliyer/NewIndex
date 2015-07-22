@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BBIndexModelStoreContainer" CdmEntityContainer="BBIndexEntities1">
+    <EntitySetMapping Name="Causes">
+      <EntityTypeMapping TypeName="BBIndexModel.Cause">
+        <MappingFragment StoreEntitySet="Causes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CauseName" ColumnName="CauseName" />
+          <ScalarProperty Name="ZIPCode" ColumnName="ZIPCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Constituents">
+      <EntityTypeMapping TypeName="BBIndexModel.Constituent">
+        <MappingFragment StoreEntitySet="Constituent">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Donations">
+      <EntityTypeMapping TypeName="BBIndexModel.Donation">
+        <MappingFragment StoreEntitySet="Donations">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AmountDonated" ColumnName="AmountDonated" />
+          <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
+          <ScalarProperty Name="CauseID" ColumnName="CauseID" />
+          <ScalarProperty Name="ConstituentID" ColumnName="ConstituentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

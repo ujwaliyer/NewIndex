@@ -4,11 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BBIndexModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BBIndexModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BBIndexModelStoreContainer">
           <EntitySet Name="Causes" EntityType="BBIndexModel.Store.Causes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Constituent" EntityType="BBIndexModel.Store.Constituent" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DonorData" EntityType="BBIndexModel.Store.DonorData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Donations" EntityType="BBIndexModel.Store.Donations" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Donations_Constituent" Association="BBIndexModel.Store.FK_Donations_Constituent">
+            <End Role="Causes" EntitySet="Causes" />
+            <End Role="Donations" EntitySet="Donations" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Causes">
           <Key>
@@ -30,32 +34,53 @@
           <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="ZIP" Type="nvarchar" Nullable="false" MaxLength="10" />
         </EntityType>
-        <EntityType Name="DonorData">
+        <EntityType Name="Donations">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="AmountDonated" Type="float" />
-          <Property Name="DonationDate" Type="date" />
-          <Property Name="CauseID" Type="int" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="AmountDonated" Type="money" Nullable="false" />
+          <Property Name="DonationDate" Type="datetime" Nullable="false" />
+          <Property Name="CauseID" Type="int" Nullable="false" />
+          <Property Name="ConstituentID" Type="int" Nullable="false" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <Association Name="FK_Donations_Constituent">
+          <End Role="Causes" Type="BBIndexModel.Store.Causes" Multiplicity="1" />
+          <End Role="Donations" Type="BBIndexModel.Store.Donations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Causes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Donations">
+              <PropertyRef Name="CauseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BBIndexModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="BBIndexEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Causes" EntityType="BBIndexModel.Caus" />
+        <EntityContainer Name="BBIndexEntities1" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Causes" EntityType="BBIndexModel.Cause" />
           <EntitySet Name="Constituents" EntityType="BBIndexModel.Constituent" />
-          <EntitySet Name="DonorDatas" EntityType="BBIndexModel.DonorData" />
+          <EntitySet Name="Donations" EntityType="BBIndexModel.Donation" />
+          <AssociationSet Name="FK_Donations_Donations" Association="BBIndexModel.FK_Donations_Donations">
+            <End Role="Constituent" EntitySet="Constituents" />
+            <End Role="Donations" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donations_Constituent" Association="BBIndexModel.FK_Donations_Constituent">
+            <End Role="Cause" EntitySet="Causes" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Caus">
+        <EntityType Name="Cause">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="CauseName" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
           <Property Name="ZIPCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Donations" Relationship="BBIndexModel.FK_Donations_Constituent" FromRole="Cause" ToRole="Donation" />
         </EntityType>
         <EntityType Name="Constituent">
           <Key>
@@ -68,24 +93,52 @@
           <Property Name="City" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="State" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="ZIP" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Donations" Relationship="BBIndexModel.FK_Donations_Donations" FromRole="Constituent" ToRole="Donations" />
         </EntityType>
-        <EntityType Name="DonorData">
+        <EntityType Name="Donation">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="AmountDonated" Type="Double" />
-          <Property Name="DonationDate" Type="DateTime" Precision="0" />
-          <Property Name="CauseID" Type="Int32" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="AmountDonated" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="DonationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CauseID" Type="Int32" Nullable="false" />
+          <Property Name="ConstituentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Constituent" Relationship="BBIndexModel.FK_Donations_Donations" FromRole="Donations" ToRole="Constituent" />
+          <NavigationProperty Name="Caus" Relationship="BBIndexModel.FK_Donations_Constituent" FromRole="Donation" ToRole="Cause" />
         </EntityType>
+        <Association Name="FK_Donations_Donations">
+          <End Role="Constituent" Type="BBIndexModel.Constituent" Multiplicity="1" />
+          <End Role="Donations" Type="BBIndexModel.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Constituent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Donations">
+              <PropertyRef Name="ConstituentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donations_Constituent">
+          <End Type="BBIndexModel.Cause" Role="Cause" Multiplicity="1" />
+          <End Type="BBIndexModel.Donation" Role="Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cause">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="CauseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BBIndexModelStoreContainer" CdmEntityContainer="BBIndexEntities">
+        <EntityContainerMapping StorageEntityContainer="BBIndexModelStoreContainer" CdmEntityContainer="BBIndexEntities1">
           <EntitySetMapping Name="Causes">
-            <EntityTypeMapping TypeName="BBIndexModel.Caus">
+            <EntityTypeMapping TypeName="BBIndexModel.Cause">
               <MappingFragment StoreEntitySet="Causes">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CauseName" ColumnName="CauseName" />
@@ -106,13 +159,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DonorDatas">
-            <EntityTypeMapping TypeName="BBIndexModel.DonorData">
-              <MappingFragment StoreEntitySet="DonorData">
+          <EntitySetMapping Name="Donations">
+            <EntityTypeMapping TypeName="BBIndexModel.Donation">
+              <MappingFragment StoreEntitySet="Donations">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="AmountDonated" ColumnName="AmountDonated" />
                 <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
                 <ScalarProperty Name="CauseID" ColumnName="CauseID" />
+                <ScalarProperty Name="ConstituentID" ColumnName="ConstituentID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

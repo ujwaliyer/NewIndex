@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BBIndexModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BBIndexEntities1" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Causes" EntityType="BBIndexModel.Cause" />
+    <EntitySet Name="Constituents" EntityType="BBIndexModel.Constituent" />
+    <EntitySet Name="Donations" EntityType="BBIndexModel.Donation" />
+    <AssociationSet Name="FK_Donations_Donations" Association="BBIndexModel.FK_Donations_Donations">
+      <End Role="Constituent" EntitySet="Constituents" />
+      <End Role="Donations" EntitySet="Donations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Donations_Constituent" Association="BBIndexModel.FK_Donations_Constituent">
+      <End Role="Cause" EntitySet="Causes" />
+      <End Role="Donation" EntitySet="Donations" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cause">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CauseName" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="ZIPCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Donations" Relationship="BBIndexModel.FK_Donations_Constituent" FromRole="Cause" ToRole="Donation" />
+  </EntityType>
+  <EntityType Name="Constituent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="ZIP" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Donations" Relationship="BBIndexModel.FK_Donations_Donations" FromRole="Constituent" ToRole="Donations" />
+  </EntityType>
+  <EntityType Name="Donation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="AmountDonated" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="DonationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CauseID" Type="Int32" Nullable="false" />
+    <Property Name="ConstituentID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Constituent" Relationship="BBIndexModel.FK_Donations_Donations" FromRole="Donations" ToRole="Constituent" />
+    <NavigationProperty Name="Caus" Relationship="BBIndexModel.FK_Donations_Constituent" FromRole="Donation" ToRole="Cause" />
+  </EntityType>
+  <Association Name="FK_Donations_Donations">
+    <End Role="Constituent" Type="BBIndexModel.Constituent" Multiplicity="1" />
+    <End Role="Donations" Type="BBIndexModel.Donation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Constituent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Donations">
+        <PropertyRef Name="ConstituentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Donations_Constituent">
+    <End Type="BBIndexModel.Cause" Role="Cause" Multiplicity="1" />
+    <End Type="BBIndexModel.Donation" Role="Donation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cause">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Donation">
+        <PropertyRef Name="CauseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

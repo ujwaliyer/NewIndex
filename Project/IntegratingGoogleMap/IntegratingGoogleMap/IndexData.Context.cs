@@ -13,10 +13,10 @@ namespace IntegratingGoogleMap
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BBIndexEntities : DbContext
+    public partial class BBIndexEntities1 : DbContext
     {
-        public BBIndexEntities()
-            : base("name=BBIndexEntities")
+        public BBIndexEntities1()
+            : base("name=BBIndexEntities1")
         {
         }
     
@@ -25,8 +25,8 @@ namespace IntegratingGoogleMap
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Caus> Causes { get; set; }
+        public DbSet<Cause> Causes { get; set; }
         public DbSet<Constituent> Constituents { get; set; }
-        public DbSet<DonorData> DonorDatas { get; set; }
+        public DbSet<Donation> Donations { get; set; }
     }
 }
