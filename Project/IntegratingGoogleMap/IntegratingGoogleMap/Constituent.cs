@@ -14,6 +14,11 @@ namespace IntegratingGoogleMap
     
     public partial class Constituent
     {
+        public Constituent()
+        {
+            this.Donations = new HashSet<Donation>();
+        }
+    
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -21,5 +26,7 @@ namespace IntegratingGoogleMap
         public string City { get; set; }
         public string State { get; set; }
         public string ZIP { get; set; }
+    
+        public virtual ICollection<Donation> Donations { get; set; }
     }
 }
