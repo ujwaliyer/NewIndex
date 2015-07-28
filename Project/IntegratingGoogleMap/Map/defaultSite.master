@@ -1,0 +1,139 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="defaultSite.master.cs" Inherits="defaultSite" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><%: Page.Title %> - Blackbaud Index++</title>
+    <asp:PlaceHolder ID="PlaceHolder1" runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <%--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />--%>
+    <link href="Content/GoogleChart.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body id="BodyId" style="margin: 0px; padding: 0px; border: 0px">
+    <form id="Form1" runat="server" class="navbar-form">
+        <div id="wrapOuter">
+            <div id="wrapInner">
+                <div class="internal bb-omnibar-height-padding" id="wrapBody">
+                    <p class="site-title">
+                        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/sitelogo.png" Width="50%" Height="70" />
+                    </p>
+                    <div class="blackbaudGreen nonprofResources" id="wrapBodyContent">
+                        <div id="wrapContent">
+                            <div id="wrapInternalContent">
+                                <div id="wrapInternalNav">
+                                    <div id="internalNav">
+                                        <ul class="nav">
+                                            <li class=" menuItem1 parent selected">
+                                                <a class="selected tracked" href="http://www.blackbaud.com/nonprofit-resources">Reports</a>
+
+                                            </li>
+                                            <ul class="nccUlMenuSub2">
+                                                <li class="menuItem1 selected">
+                                                    <ul class="nccUlMenuSub3">
+                                                        <li class="menuItem1 selected"><a href="Dashboard.aspx" class="selected tracked">+ Dashboard</a></li>
+                                                        <li class="menuItem1 selected"><a href="ZipCode.aspx" class="tracked">+ Zip Code</a></li>
+                                                        <li class="menuItem1 selected"><a href="DonationDensity.aspx" class="tracked">+ Donation Density</a></li>
+                                                        <li class="menuItem1 selected"><a href="5Year.aspx" class="tracked">+ Last 5 Years</a></li>
+                                                         <li class="menuItem1 selected"><a href="LiveDonation.aspx" class="tracked">+ Current Donations</a></li>
+                                                        <li class="menuItem1 selected"><a href="Default.aspx" class="tracked">+ Live Donations</a></li>
+                                                       <%-- <li class="menuItem1 selected"><a href="Dashboard.aspx" class="tracked">+ Last 10 Years</a></li>       --%>                                                                                                      
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                        <!--END MENU-->
+                                    </div>                                  
+                                </div>
+                                <div id="wrapInternalRight">
+                                    <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+                                    <section class="content-wrapper main-content clear-fix">
+                                        <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="wrapContactBar">
+                        </div>
+                    </div>
+                    <div id="wrapCopyright">
+                        <script src="//cdnjs.cloudflare.com/ajax/libs/easyXDM/2.4.17.1/easyXDM.min.js" type="text/javascript"></script>
+                        <script src="//signin.blackbaud.com/omnibar.js" type="text/javascript"></script>
+                        <div id="omnibar" style="display: block;">
+
+                            <div data-bbauto-view="Omnibar" class="bb-omnibar noservices signedout servicelinksloaded">
+                                <div data-bbauto-field="Desktop" class="desktop">
+                                    <div data-bbauto-field="bar" aria-haspopup="true" class="bar" style="z-index: 1000; height: 50px;">
+                                        <div aria-haspopup="true" class="header bb-omnibar-button">
+                                            <div data-bbauto-field="BlackbaudLogo" class="bblogo logo" style="display: block;"></div>
+                                            <div data-bbauto-field="RENXTLogo" class="rexlogo logo"></div>
+                                            <div data-bbauto-field="FENXTLogo" class="fexlogo logo"></div>
+                                            <div data-bbauto-field="AltruLogo" class="altrulogo logo"></div>
+                                            <div data-bbauto-field="ResearchPointLogo" class="researchpointlogo logo"></div>
+                                            <div data-bbauto-field="ServiceNameLabel" class="servicename hideforcollapsed" style="display: block;"></div>
+                                            <div class="flydownArrow hideforcollapsed"></div>
+                                        </div>
+                                        <div aria-haspopup="true" class="databasePicker bb-omnibar-button hidden hideforcollapsed">
+                                            <div class="selectedText">
+                                                <div data-bbauto-field="CurrentDatabaseLabel" class="currentDatabase"></div>
+                                                <div data-bbauto-field="UnknownDatabaseLabel" style="display: none;" class="unknownDatabase">Switch to database...</div>
+                                            </div>
+                                            <div data-bbauto-field="MiniDatabasePickerButton" class="pickerIcon"></div>
+                                            <div class="flydownArrow"></div>
+                                        </div>
+                                        <div class="search hideforcollapsed">
+                                            <div class="searchContainer">
+                                                <input type="text" data-bbauto-field="SearchBox" class="searchbox" id="omnibar_searchbox">
+                                                <div class="searchButton">
+                                                    <div data-bbauto-field="SearchIcon" class="searchButtonIcon"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="signinheader hideforcollapsed">
+                                            <a data-bbauto-field="SignIn" class="signin" href="https://signin.blackbaud.com/?RedirectUrl=https%3A%2F%2Fwww.blackbaud.com%2Fnonprofit-resources%2Fblackbaud-index&amp;ck=bbmigration">Sign in</a>
+                                        </div>
+                                        <div aria-haspopup="true" class="welcomeheader bb-omnibar-button hideforcollapsed">
+                                            <div data-bbauto-field="WelcomeMessage" class="welcomemesage"></div>
+                                            <div class="flydownArrow"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            var bb_menu = $('.bb_menu');
+
+                            if (bb_menu.length) {
+                                bb_menu.addClass('bb-omnibar-height-margin');
+                            } else {
+                                $('#wrapBody').addClass('bb-omnibar-height-padding');
+                            }
+
+                            BBAUTH.Omnibar.load(document.getElementById("omnibar"),
+                            {
+                                afterLoad: function () {
+                                    $("#omnibar .desktop .bar, #omnibar .desktop .accountflyout, #omnibar .desktop .serviceflyout").css("z-index", "1000");
+                                },
+                                signOutRedirectUrl: "https://" + document.domain + "/profile/logout.aspx",
+                                signInRedirectUrl: document.location.href,
+                                contentKey: "bbmigration"
+                            });
+                            if (document.getElementById('wrapMainNav') != null) { initMainNav(); }
+                            if (document.getElementById('wrapSlideshow') != null) { initHomeSlides(); }
+                            if (document.getElementById('wrapSlideshowNav') != null) { initHomeThumbs(); }
+                        </script>
+                        <!-- OmniBar includes -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

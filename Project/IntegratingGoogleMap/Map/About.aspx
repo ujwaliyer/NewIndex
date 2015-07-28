@@ -1,82 +1,54 @@
 ﻿<%@ Page Title="About" Language="C#" AutoEventWireup="true" CodeFile="About.aspx.cs" Inherits="About" %>
 
+<!DOCTYPE html>
 <html>
-  <head>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-        google.load('visualization', '1', { 'packages': ['table', 'map', 'corechart'] });
-        google.setOnLoadCallback(initialize);
+<head>
+    <meta charset="utf-8" />
+    <title>Dashboard</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+    <link href="Content/Site.css" rel="stylesheet" />
+   
+</head>
+<body>
+    <form id="Form1" runat="server" class="navbar-form">
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">
+                        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logo.jpg" Width="100%" Height="100" />
+                    </p>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            <div id='map'></div>
+        </div>
+    </form>
+    <script>
+        L.mapbox.accessToken = 'pk.eyJ1Ijoic2FjaGludHJpcGF0aGkiLCJhIjoiYmU1YzEzMDE0ZWQzMGI3M2JhNmI0NDRkNmYzNTIxMTcifQ.Jokrk6ZEIe5wTSkLfhmvkA';
+        var map = L.mapbox.map('map', 'mapbox.streets')
+            .setView([38, -102.0], 2);
 
-        function initialize() {
-            // The URL of the spreadsheet to source data from.
-            var query = new google.visualization.Query(
-                'https://spreadsheets.google.com/pub?key=pCQbetd-CptF0r8qmCOlZGg');
-            query.send(draw);
-        }
+        // As with any other AJAX request, this technique is subject to the Same Origin Policy:
+        // http://en.wikipedia.org/wiki/Same_origin_policy
+        var featureLayer = L.mapbox.featureLayer()
+            .loadURL('https://wanderdrone.appspot.com/')
+            // Once this layer loads, we set a timer to load it again in a few seconds.
+            .on('ready', run)
+            .addTo(map);
 
-        function draw(response) {
-            if (response.isError()) {
-                alert('Error in query');
-            }
-
-            var ticketsData = response.getDataTable();
-            var chart = new google.visualization.ColumnChart(
-                document.getElementById('chart_div'));
-            chart.draw(ticketsData, {
-                'isStacked': true, 'legend': 'bottom',
-                'vAxis': { 'title': 'Number of tickets' }
+        function run() {
+            featureLayer.eachLayer(function (l) {
+                map.panTo(l.getLatLng());
             });
-
-            var geoData = google.visualization.arrayToDataTable([
-              ['Lat', 'Lon', 'Name', 'Food?'],
-              [51.5072, -0.1275, 'Cinematics London', true],
-              [48.8567, 2.3508, 'Cinematics Paris', true],
-              [55.7500, 37.6167, 'Cinematics Moscow', false]]);
-
-            var geoView = new google.visualization.DataView(geoData);
-            geoView.setColumns([0, 1]);
-
-            var table =
-                new google.visualization.Table(document.getElementById('table_div'));
-            table.draw(geoData, { showRowNumber: false, width: '100%', height: '100%' });
-
-            var map =
-                new google.visualization.Map(document.getElementById('map_div'));
-            map.draw(geoView, { showTip: true });
-
-            // Set a 'select' event listener for the table.
-            // When the table is selected, we set the selection on the map.
-            google.visualization.events.addListener(table, 'select',
-                function () {
-                    map.setSelection(table.getSelection());
-                });
-
-            // Set a 'select' event listener for the map.
-            // When the map is selected, we set the selection on the table.
-            google.visualization.events.addListener(map, 'select',
-                function () {
-                    table.setSelection(map.getSelection());
-                });
+            window.setTimeout(function () {
+                featureLayer.loadURL('https://wanderdrone.appspot.com/');
+            }, 2000);
         }
     </script>
-  </head>
 
-  <body>
-    <table align="center">
-      <tr valign="top">
-        <td style="width: 50%;">
-          <div id="map_div" style="width: 400px; height: 300;"></div>
-        </td>
-        <td style="width: 50%;">
-          <div id="table_div"></div>
-        </td>
-      </tr>
-      <tr>
-        <td colSpan=2>
-          <div id="chart_div" style="align: center; width: 700px; height: 300px;"></div>
-        </td>
-      </tr>
-    </table>
-
-  </body>
+</body>
 </html>
+

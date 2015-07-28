@@ -34,7 +34,13 @@ namespace IntegratingGoogleMap.Repository
                                                        TotalDonation = grp.Sum(x => x.AmountDonated).ToString()
                                                    };
             return totalDonationsCauseWise;
-        } 
+        }
+
+        public IEnumerable<string> GetAllZipCode()
+        {
+            return entities.Constituents.Select(x => x.ZIP);
+        }
+
         #endregion
 
     }

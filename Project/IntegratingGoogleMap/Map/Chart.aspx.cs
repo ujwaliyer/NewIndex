@@ -15,7 +15,7 @@ public partial class Chart : System.Web.UI.Page
     private GivingRepository repository = new GivingRepository();
 
     private IEnumerable<TotalDonationCause> totalDonationCauseList;
-    
+
     #endregion
 
     #region Properties
@@ -30,12 +30,22 @@ public partial class Chart : System.Web.UI.Page
             }
             return totalDonationCauseList;
         }
-    } 
+    }
 
     #endregion
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Page.IsPostBack)
+            LoadZipCode();
+    }
+
+
+    private void LoadZipCode()
+    {
+        ddlZip.DataSource = repository.GetAllZipCode().ToList();
+        ddlZip.DataBind();
+        //ddlZip.Items.Insert(0, new ListItem("--- Select Zip ---", ""));
 
     }
 }

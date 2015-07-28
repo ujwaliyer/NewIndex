@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Chart.master" AutoEventWireup="true" CodeFile="Chart.aspx.cs" Inherits="Chart" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/defaultSite.master" AutoEventWireup="true" CodeFile="Chart.aspx.cs" Inherits="Chart" %>
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -11,21 +11,42 @@
         google.setOnLoadCallback(drawStacked);
 
         function drawStacked() {
+            var data1 = google.visualization.arrayToDataTable([
+                ['Causes', 'Total Donations', { role: 'style' }],
+                ['Charity Fundraising', 8.94, '#b87333'],
+                ['Cancer Fundraising', 10.49, 'silver'],
+                ['Church Fundraising', 19.30, 'gold'],
+                ['Political Fundraising', 21.45, 'color: #e5e4e2'],
+                ['School Fundraising', 11.45, 'color: #e5e4e2'],
+            ]);
+
             var data = google.visualization.arrayToDataTable([
-              ['City', '2010 Population', '2000 Population'],
-              ['New York City, NY', 8175000, 8008000],
-              ['Los Angeles, CA', 3792000, 3694000],
-              ['Chicago, IL', 2695000, 2896000],
-              ['Houston, TX', 2099000, 1953000],
-              ['Philadelphia, PA', 1526000, 1517000]
+              ['City', '2010 Donations', '2000 Donations'],
+              ['New York City, NY', 11, 12],
+              ['Los Angeles, CA', 15, 17],
+              ['Chicago, IL', 10, 9],
+              ['Houston, TX', 20, 34],
+              ['Philadelphia, PA', 12, 7]
             ]);
 
             var options = {
-                title: 'Population of Largest U.S. Cities',
+                title: 'U.S. Cities Donation Reports',
                 chartArea: { width: '100%' },
                 isStacked: true,
                 hAxis: {
-                    title: 'Total Population',
+                    title: 'Total Donations ($)',
+                    minValue: 0,
+                },
+                vAxis: {
+                    title: 'City'
+                }
+            };
+            var options1 = {
+                title: 'U.S. Cities: Donated to a cause',
+                chartArea: { width: '100%' },
+                isStacked: true,
+                hAxis: {
+                    title: 'Total Donations ($)',
                     minValue: 0,
                 },
                 vAxis: {
@@ -33,34 +54,30 @@
                 }
             };
             var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            var chart1 = new google.visualization.BarChart(document.getElementById('chart_div1'));
             chart.draw(data, options);
+            chart1.draw(data1, options1);
         }
 
     </script>
 </asp:Content>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-
     <div class="panel panel-default">
         <div class="panel-body row">
-            <div class="form-group col-md-3">
-                  USA
+            <div class="form-group col-md-2">
+                <strong>Selected Country: </strong>
+                <span>USA</span>
             </div>
             <div class="form-group col-md-3">
-                <select class="form-control">
-                    <option>-- Select State--</option>
-                </select>
+                <asp:DropDownList ID="ddlZip" CssClass="form-control" runat="server" AutoPostBack="false"></asp:DropDownList>
             </div>
-            <div class="form-group col-md-3">
-                <select class="form-control">
-                    <option>-- Select Zip--</option>
-                </select>
-            </div>
-            <div class="form-group col-md-3">
-                <button type="submit" class="btn btn-primary">Get Report</button>
+            <div class="form-group col-md-7">
+                <input type="button" id="btnGetReport" class="btn btn-primary" value="Get Report" />
             </div>
         </div>
     </div>
+
     <div id="accordion">
         <h3>Total Donation: Causes</h3>
         <div>
@@ -82,9 +99,12 @@
                 </li>
             </ul>
         </div>
-        <h3>Total Donation: Yearly</h3>
+        <h3>Total Donation: Report Chart</h3>
         <div>
+
             <div id="chart_div"></div>
+
+            <div id="chart_div1"></div>
         </div>
         <h3>Recommendations</h3>
         <div>
@@ -101,9 +121,6 @@
                 <a href="#" class="alert-link">Pathways To Peace has received the minimum donation in the last year.</a>
             </div>
         </div>
-        <h3>Google Map: Donor locations</h3>
-        <div>
-            <div id="gmap">Working.....</div>
-        </div>
     </div>
+
 </asp:Content>
