@@ -5334,6 +5334,7 @@ p.tileFootnoteText {
     float: left;
     padding-bottom: 10px;
     width: 760px;
+    margin-top:20px;
 }
 #wrapInternalRight h1 {
     color: #575757;
