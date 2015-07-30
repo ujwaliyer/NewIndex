@@ -20,16 +20,16 @@ public partial class Dashboard : System.Web.UI.Page
     public static object[] GetChartData()
     {
         List<GoogleChartData> data = new List<GoogleChartData>();
-        data.Add(new GoogleChartData() { SLID = 1001, ProductCategory = "Charity Fundraising", RevenueAmount = 1203 });
-        data.Add(new GoogleChartData() { SLID = 1021, ProductCategory = "Cancer Fundraising", RevenueAmount = 1229 });
-        data.Add(new GoogleChartData() { SLID = 1022, ProductCategory = "Church Fundraising", RevenueAmount = 1113 });
-        data.Add(new GoogleChartData() { SLID = 1023, ProductCategory = "Political Fundraising", RevenueAmount = 1100 });
-        data.Add(new GoogleChartData() { SLID = 1024, ProductCategory = "School Fundraising", RevenueAmount = 1002 });
+        data.Add(new GoogleChartData() { SLID = 1001, ProductCategory = "Catholic Charities USA", RevenueAmount = 5600 });
+        data.Add(new GoogleChartData() { SLID = 1021, ProductCategory = "Children's Hunger Fund", RevenueAmount = 12400 });
+        data.Add(new GoogleChartData() { SLID = 1022, ProductCategory = "National Rural Water Association", RevenueAmount = 1213 });
+        data.Add(new GoogleChartData() { SLID = 1023, ProductCategory = "Human Rights Foundation", RevenueAmount = 1200 });
+        data.Add(new GoogleChartData() { SLID = 1024, ProductCategory = "Free Software Foundation", RevenueAmount = 7902 });
 
 
         var chartData = new object[data.Count + 1];
         chartData[0] = new object[]{
-                "Product Category",
+                "Causes",
                 "Revenue Amount"
             };
         int j = 0;

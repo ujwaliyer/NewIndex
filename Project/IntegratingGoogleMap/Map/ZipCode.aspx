@@ -37,11 +37,11 @@
             data.addColumn('string', 'Causes');
             data.addColumn('number', 'Total Revenue ($)');
             data.addRows([
-              ['Charity Fundraising', 20],
-              ['Cancer Fundraising', 12],
-              ['Church Fundraising', 4],
-              ['Political Fundraising', 4],
-              ['School Fundraising', 10]
+              ['Catholic Charities USA', 20],
+              ["Children's Hunger Fund", 12],
+              ['National Rural Water Association', 4],
+              ['Human Rights Foundation', 4],
+              ['Free Software Foundation', 10]
             ]);
 
             // Set chart options
@@ -61,11 +61,11 @@
             data.addColumn('string', 'Causes');
             data.addColumn('number', 'Total Revenue ($)');
             data.addRows([
-              ['Charity Fundraising', 7],
-              ['Cancer Fundraising', 11],
-              ['Church Fundraising', 6],
-              ['Political Fundraising', 2],
-              ['School Fundraising', 14]
+              ['Catholic Charities USA', 30],
+              ["Children's Hunger Fund", 10],
+              ['National Rural Water Association', 14],
+              ['Human Rights Foundation', 12],
+              ['Free Software Foundation', 9]
             ]);
 
             // Set chart options
@@ -85,11 +85,11 @@
             data.addColumn('string', 'Causes');
             data.addColumn('number', 'Total Revenue ($)');
             data.addRows([
-              ['Charity Fundraising', 1],
-              ['Cancer Fundraising', 15],
-              ['Church Fundraising', 3],
-              ['Political Fundraising', 12],
-              ['School Fundraising', 6]
+              ['Catholic Charities USA', 19],
+              ["Children's Hunger Fund", 145],
+              ['National Rural Water Association', 12],
+              ['Human Rights Foundation', 120],
+              ['Free Software Foundation', 109]
             ]);
 
             // Set chart options
@@ -109,11 +109,11 @@
             data.addColumn('string', 'Causes');
             data.addColumn('number', 'Total Revenue ($)');
             data.addRows([
-              ['Charity Fundraising', 7],
-              ['Cancer Fundraising', 5],
-              ['Church Fundraising', 5],
-              ['Political Fundraising', 2],
-              ['School Fundraising', 10]
+              ['Catholic Charities USA', 109],
+              ["Children's Hunger Fund", 115],
+              ['National Rural Water Association', 112],
+              ['Human Rights Foundation', 10],
+              ['Free Software Foundation', 9]
             ]);
 
             // Set chart options
@@ -133,11 +133,11 @@
             data.addColumn('string', 'Causes');
             data.addColumn('number', 'Total Revenue ($)');
             data.addRows([
-              ['Charity Fundraising', 2],
-              ['Cancer Fundraising', 5],
-              ['Church Fundraising', 15],
-              ['Political Fundraising', 12],
-              ['School Fundraising', 10]
+            ['Catholic Charities USA', 49],
+              ["Children's Hunger Fund", 15],
+              ['National Rural Water Association', 52],
+              ['Human Rights Foundation', 13],
+              ['Free Software Foundation', 119]
             ]);
 
             // Set chart options
@@ -157,11 +157,11 @@
             data.addColumn('string', 'Causes');
             data.addColumn('number', 'Total Revenue ($)');
             data.addRows([
-              ['Charity Fundraising', 12],
-              ['Cancer Fundraising', 5],
-              ['Church Fundraising', 5],
-              ['Political Fundraising', 2],
-              ['School Fundraising', 10]
+            ['Catholic Charities USA', 69],
+              ["Children's Hunger Fund", 105],
+              ['National Rural Water Association', 17],
+              ['Human Rights Foundation', 170],
+              ['Free Software Foundation', 89]
             ]);
 
             // Set chart options
@@ -181,11 +181,11 @@
             data.addColumn('string', 'Causes');
             data.addColumn('number', 'Total Revenue ($)');
             data.addRows([
-              ['Charity Fundraising', 2],
-              ['Cancer Fundraising', 2],
-              ['Church Fundraising', 5],
-              ['Political Fundraising', 12],
-              ['School Fundraising', 10]
+             ['Catholic Charities USA', 19],
+              ["Children's Hunger Fund", 145],
+              ['National Rural Water Association', 12],
+              ['Human Rights Foundation', 10],
+              ['Free Software Foundation', 39]
             ]);
 
             // Set chart options
@@ -205,11 +205,11 @@
             data.addColumn('string', 'Causes');
             data.addColumn('number', 'Total Revenue ($)');
             data.addRows([
-              ['Charity Fundraising', 12],
-              ['Cancer Fundraising', 2],
-              ['Church Fundraising', 15],
-              ['Political Fundraising', 12],
-              ['School Fundraising', 10]
+             ['Catholic Charities USA', 129],
+              ["Children's Hunger Fund", 15],
+              ['National Rural Water Association', 102],
+              ['Human Rights Foundation', 140],
+              ['Free Software Foundation', 59]
             ]);
 
             // Set chart options
@@ -293,19 +293,19 @@
         </span>
     </div>
     <div class="row">
-        <div id="chart_div1" style="width:700px; height:400px;">
+        <div id="chart_div1">
         </div>
     </div>
     <div class="row">
-        <div id="chart_div2" style="width:700px; height:400px;">
+        <div id="chart_div2">
         </div>
     </div>
     <div class="row">
-        <div id="chart_div3" style="width:700px; height:400px;">
+        <div id="chart_div3">
         </div>
     </div>
     <div class="row">
-        <div id="chart_div4" style="width:700px; height:400px;">
+        <div id="chart_div4">
         </div>
     </div>
     <div class="row">
@@ -322,7 +322,7 @@
     </div>
     <div class="row">
         <div id="chart_div8">
-        </div>  
+        </div>
     </div>
 </asp:Content>
 

@@ -7,7 +7,7 @@
         google.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-              ['Year', 'Charity Fundraising', 'Cancer Fundraising', 'Church Fundraising', 'Political Fundraising', 'School Fundraising'],
+              ['Year', 'Catholic Charities USA', "Children's Hunger Fund", 'National Rural Water Association', 'Human Rights Foundation', 'Free Software Foundation'],
               ['2011', 1270, 240, 300, 323, 400],
               ['2012', 1030, 540, 600, 1232, 200],
               ['2013', 1000, 400, 253, 876, 123],
