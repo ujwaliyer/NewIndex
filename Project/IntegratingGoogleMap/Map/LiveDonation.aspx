@@ -31,6 +31,12 @@
             var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
             chart.draw(data, options);
         };
+
+
+        $(document).ready(function () {
+            $('a#Current').addClass('selected');
+        });
+
     </script>
 
 </asp:Content>

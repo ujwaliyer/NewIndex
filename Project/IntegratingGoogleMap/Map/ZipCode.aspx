@@ -224,6 +224,8 @@
 
         $(document).ready(function () {
 
+            $('a#Zip').addClass('selected');
+          
             showChart(1);
 
             $("#btnReport").click(function () {

@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />--%>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link href="Content/GoogleChart.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
@@ -33,24 +35,22 @@
                                         <ul class="nav">
                                             <li class=" menuItem1 parent selected">
                                                 <a class="selected tracked" href="http://www.blackbaud.com/nonprofit-resources">Reports</a>
-
                                             </li>
                                             <ul class="nccUlMenuSub2">
                                                 <li class="menuItem1 selected">
                                                     <ul class="nccUlMenuSub3">
-                                                        <li class="menuItem1 selected"><a href="Dashboard.aspx" class="selected tracked">+ Dashboard</a></li>
-                                                        <li class="menuItem1 selected"><a href="ZipCode.aspx" class="tracked">+ Zip Code</a></li>
-                                                        <li class="menuItem1 selected"><a href="DonationDensity.aspx" class="tracked">+ Donation Density</a></li>
-                                                        <li class="menuItem1 selected"><a href="5Year.aspx" class="tracked">+ Last 5 Years</a></li>
-                                                         <li class="menuItem1 selected"><a href="LiveDonation.aspx" class="tracked">+ Current Donations</a></li>
+                                                        <li class="menuItem1 selected"><a id="Dashboard" href="Dashboard.aspx" class="tracked">+ Dashboard</a></li>
+                                                        <li class="menuItem1 selected"><a id="Zip" href="ZipCode.aspx" class="tracked">+ Zip Code</a></li>
+                                                        <%-- <li class="menuItem1 selected"><a id="Years" href="5Year.aspx" class="tracked">+ Analysis</a></li>
+                                                        <li class="menuItem1 selected"><a id="Density" href="DonationDensity.aspx" class="tracked">+ Recommendations</a></li>--%>
+                                                        <%--<li class="menuItem1 selected"><a id="Current" href="LiveDonation.aspx" class="tracked">+ Current Donations</a></li>--%>
                                                         <li class="menuItem1 selected"><a href="Default.aspx" class="tracked">+ Live Donations</a></li>
-                                                       <%-- <li class="menuItem1 selected"><a href="Dashboard.aspx" class="tracked">+ Last 10 Years</a></li>       --%>                                                                                                      
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </ul>
                                         <!--END MENU-->
-                                    </div>                                  
+                                    </div>
                                 </div>
                                 <div id="wrapInternalRight">
                                     <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />

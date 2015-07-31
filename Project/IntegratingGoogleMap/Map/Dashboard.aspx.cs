@@ -30,7 +30,7 @@ public partial class Dashboard : System.Web.UI.Page
         var chartData = new object[data.Count + 1];
         chartData[0] = new object[]{
                 "Causes",
-                "Revenue Amount"
+                "Total Revenue ($)"
             };
         int j = 0;
         foreach (var i in data)

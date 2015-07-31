@@ -22,10 +22,14 @@
             bottom: 0;
             width: 100%;
         }
+        #row
+        {
+            margin-top:20px;
+        }
     </style>
 </head>
 <body>
-
+  
     <div id='map'></div>
     <script>
         L.mapbox.accessToken = 'pk.eyJ1Ijoic2FjaGludHJpcGF0aGkiLCJhIjoiYmU1YzEzMDE0ZWQzMGI3M2JhNmI0NDRkNmYzNTIxMTcifQ.Jokrk6ZEIe5wTSkLfhmvkA';

@@ -7155,12 +7155,11 @@ p.tileFootnoteText
 
     #internalNav li.selected a.selected, #internalNav .nccUlMenuSub2 li.selected a, #internalNav .menuItem2.selected a, #internalNav .menuItem3.selected a, #internalNav .menuItem4.selected a, #internalNav .menuItem5.selected a, #internalNav .menuItem6.selected a, #internalNav .menuItem8.selected a
     {
-        background: rgba(0, 0, 0, 0) url("view.image?id=409") no-repeat scroll 0 50px;
         border: 0 none;
         color: #7ab800;
         display: block;
         font-family: Helvetica Neue Light,Helvetica,Arial,sans-serif;
-        font-size: 24px;
+        font-size: 19px;
         margin: 0;
         padding-bottom: 25px;
         padding-left: 8px;
@@ -7212,7 +7211,7 @@ p.tileFootnoteText
 
 #internalNav .menuItem1 .nccUlMenuSub3 li.selected a.selected, #internalNav li.selected a, #internalNav .menuItem2 .nccUlMenuSub1 li.selected a.selected, #internalNav .menuItem3 .nccUlMenuSub1 li.selected a.selected, #internalNav .menuItem4 .nccUlMenuSub1 li.selected a.selected, #internalNav .menuItem5 .nccUlMenuSub1 li.selected a.selected, #internalNav .nccUlMenuSub2 li .nccUlMenuSub3 li a, #internalNav .menuItem2 .nccUlMenuSub1 li a, #internalNav .menuItem3 .nccUlMenuSub1 li a, #internalNav .menuItem4 .nccUlMenuSub1 li a, #internalNav .menuItem5 .nccUlMenuSub1 li a, #internalNav .menuItem6 .nccUlMenuSub1 li a, #internalNav .menuItem8 .nccUlMenuSub1 li a, #internalNav .menuItem7 .nccUlMenuSub1 li a, #internalNav .menuItem7 .nccUlMenuSub2 li a, #internalNav .menuItem7 .nccUlMenuSub1 li .nccUlMenuSub2 li a
 {
-    border-bottom: 1px dotted #d4d4d4;
+    border-bottom: 1px solid #d4d4d4;
     color: #565a5c;
     font-family: Helvetica Neue Med,Helvetica,Arial,sans-serif;
     font-size: 15px;
